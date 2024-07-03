@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js function</title>
+    <script>
+        function basicFunction(){
+            alert("hello world!");
+        }
+        const variableFunction1 = function(){
+            console.log("hello world variableFunction");
+        }
+        // 실행문이 1줄일 경우 중괄호 생략 가능
+        const variableFunction2 = ()=>{
+            console.log("hello world variableFunction");
+        }
+        const makeString1 = () =>{ return "hello world"};
+        const makeString2 = () => "hello world";
+        function returnFunction1(){
+            console.log(makeString1());
+            console.log(makeString2());
+        }
+        function paramfunction1(a,b){
+            let total = a+b;
+            console.log(total);
+        }
+    </script>
+</head>
+<body>
+    <h2>js 기본 함수 호출</h2>
+    <button onclick="basicFunction()">기본 함수 호출</button>
+    <button onclick="variableFunction1()">변수로 된 함수 호출1</button>
+    <button onclick="variableFunction2()">변수로 된 함수 호출2</button>
+    <button onclick="returnFunction1()">리턴함수 호출 1</button>
+    <button onclick="paramfunction1(1,'hongildong')">매개변수 있는 함수 호출1</button>
+
+</body>
+</html>

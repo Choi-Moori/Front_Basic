@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js intro</title>
+    <script>
+        function variableConsole1(){
+            console.log("hello world");
+            // var, let, const 셋중에 하나 키워드를 사용
+            var a = 10;
+            var b = "10";
+            var c = 20;
+            console.log(a+b);
+            console.log(a+c);
+        }
+        function variableConsole2(){
+            // var arr = [10, "20" , 30 , "40"];
+            // arr.push(50);
+            // for(var i=0; i < arr.length ; i++){
+            //     console.log(arr[i]);
+            // }
+            // arr.forEach(a=>console.log(a));
+            // arr2를 선언해서 10,20,30,40을 배열에 담고
+            // 총합 구하기
+            var arr2 = [10,20,30,40];
+            var sum = 0;
+            for(var i = 0 ;i< arr2.length ; i++){
+                sum =  sum + arr2[i];
+            }
+            // 확인버튼누르기 전까지는 이후 코드 실행x. 화면상에서도 조작 불가. 
+            alert("total : " + sum);
+            // document.write를 쓰는것을 지양 해야 한다.
+            document.write("total :" + sum);
+        }
+        function variableConsole3(){
+            var arr = [10,20, function test(){
+                console.log("hello world");
+            }];
+            arr[2]();
+        }
+        function varExample(){
+            // var는 같은 변수명에 재선언과 재할당가능
+            var a = 10;
+            var a = 20; // 이것두 가능하다 이마뤼야~
+            console.log(a);
+        }
+        function letExample(){
+            // let은 같은변수명에 재할당만 가능(재선언 불가능)
+            let a = 10;
+            // let a = 20; -> 이것은 불가능하다 이마뤼야 자슥아.
+            a = 20;
+        }
+        function constExample(){
+            // const는 재선언, 재할당 불가능.
+            const a = 10;
+            a = 20;
+            console.log(a);
+        }
+        function changeTextById(){
+            document.getElementById("change1").innerHTML = "변경완료";
+            document.getElementById("change1").style.fontSize="20px";
+        }
+        function changeTextByClass(){
+            let arr = document.getElementsByClassName("change2");
+            console.log(arr);
+            for(var i = 0; i < arr.length; i++){
+                arr[i].innerHTML="변경완료";
+                arr[i].style.fontSize="20px";
+                arr[i].style.color="red";
+            }
+        }
+        function changeTextByTag(){
+            let arr = document.getElementsByTagName("h3");
+            for(var i = 0; i < arr.length; i++){
+                arr[i].innerHTML="변경완료";
+                arr[i].style.fontSize="20px";
+                arr[i].style.color="red";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>javascript 변수와 출력</h2>
+    <button onclick="variableConsole1()">console에 변수 출력하기1</button>
+    <br>
+    <button onclick="variableConsole2()">console에 변수 출력하기2</button>
+    <br>
+    <button onclick="variableConsole3()">console에 변수 출력하기3</button>
+    <br>
+
+    <h2>javascript 변수 선언 키워드</h2>
+    <button onclick="varExample()">var 예제</button>
+    <button onclick="letExample()">let 예제</button>
+    <button onclick="constExample()">const 예제</button>
+
+    <h2>tag선택, class선택, id선택</h2>
+    <button onclick="changeTextById()">id선택 후 change</button>
+    <p id = "change1">변경대상</p>
+    <br>
+
+    <button onclick="changeTextByClass()">class선택 후 change</button>
+    <p class="change2">변경대상</p>
+    <p class="change2">변경대상</p>
+
+    <button onclick="changeTextByTag()">태그변경</button>
+    <h3>변경대상</h3>
+    <h3>변경대상</h3>
+    야이 자이자이 자이아파트 
+</body>
+</html>
