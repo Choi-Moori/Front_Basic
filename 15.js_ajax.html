@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js ajax</title>
+</head>
+<body>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script>
+        // $(document).ready : DOM객체가 완전히 로드된 이후에 코드 실행한다는 의미
+        // ~~ 되면 하겠다 이니까 비동기 함수이며 콜백처리 함수이다.
+        // 밑에 함수 양식이 콜백 함수 안의 콜백이다 - 비동기 함수.
+        // ajax 가 받아오 때 부터 객체로 받아와 준다.
+        $(document).ready(function(){
+            $.ajax({
+                url: "https://jsonplaceholder.typicode.com/posts/1",
+                type: "GET",
+                dataType: "json",
+                success: function(a){
+                    console.log(a);
+                },
+                error: function(){
+                }
+            })
+        })
+        console.log("hello world");
+    </script>
+</body>
+</html>

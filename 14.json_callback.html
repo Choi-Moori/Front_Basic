@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js coallback</title>
+</head>
+<body>
+    <!-- js 는 단일 스레드 프로그래밍으로 기본적으로는 동기적 프로그래밍이다. -->
+    <!-- db 또는 api 요청 같은 네트워크 작업은 비동기함수를 사용. -->
+    <h2>콜백함수</h2>
+    <button onclick="basicFunction()">일반함수 예제1</button>
+    <button onclick="callBackFunction1()">콜백함수 예제1</button>
+    <button onclick="callBackFunction2()">콜백함수 예제2</button>
+    <button onclick="callBackFunction3()">콜백함수 예제3</button>
+
+    <script>
+        function basicFunction(){
+            alert("hello world");
+        }
+
+        function callBackFunction1(){
+            userInput((a) => {alert(a+"님 안녕하세요")});
+        }
+        function callBackFunction2(){
+            const numbers = [1,2,3,4,5];
+            // callback 함수의 일종이다.
+            numbers.forEach(a => console.log(a));
+            // 기본적으로 javascript는 동기적으로 실행
+            console.log("hello world");
+        }
+        function callBackFunction3(){
+            // setTimeOut함수는 대표적인 js의 비동기함수중 하나(+콜백함수처리함수) 
+            setTimeout(()=>console.log("hello world1"), 2000);
+            console.log("hello world2");
+            setTimeout(()=>console.log("hello world3"), 2000);
+            console.log("hello world4");
+        }
+        function userInput(callback){
+            const name = "hongildong";
+            callback(name);
+        }
+        
+    </script>
+</body>
+</html>

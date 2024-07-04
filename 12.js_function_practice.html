@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계산기</title>
+    <script>
+        function operation(){
+            const calculvalue = document.getElementById("calculator").value;
+            const num1 = Number(document.getElementById("number1").value);
+            const num2 = Number(document.getElementById("number2").value);
+            // 강사님 코드
+            // const num3 = document.getElementsByClassName("number");
+            // const n1 = Number(num3[0].value);
+            // const n2 = Number(num3[1].value);
+            
+            const button = document.getElementById("button1");
+            let result = 0;
+            
+            if(calculvalue == "plus"){
+                result = num1+num2;
+            } else if(calculvalue == "minus"){
+                result = num1-num2;
+            } else if(calculvalue == "multiply"){
+                result = num1*num2;
+            }else if(calculvalue == "divide"){
+                result = num1/num2;
+            }
+            document.getElementById("span1").innerHTML= result;
+        }
+    </script>
+</head>
+<body>
+    <h1>도토리 묵의 계산기 프로그램 구현</h1>
+    <div>
+        <!-- 사용자로부터 사칙연산을 선택 -->
+         <label>사칙연산선택</label>
+         <select id = "calculator">
+            <option value="plus">덧셈</option>
+            <option value="minus">뺄셈</option>
+            <option value="multiply">곱셈</option>
+            <option value="divide">나눗셈</option>
+         </select>
+         <input type="text" id = "number1" class="number">
+         <input type="text" id = "number2" class="number">
+         <button onclick="operation()" id = "button1" >연산실행</button>
+         <div>결과값 <span id = "span1"></span> </div>
+    </div>
+</body>
+</html>

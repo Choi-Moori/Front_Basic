@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Json 직렬화 및 역직렬화 실습</title>
+</head>
+<body>
+
+    <h2>테이블 실습</h2>
+    <table border="1" class="table" id="table_test">
+        <thead id = "th">
+            <tr>
+                <td>name</td>
+                <td></td>
+            </tr>   
+        </thead>
+        <tbody id = "tdy">
+            <tr>
+                <td>age</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>score</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        // 단일객체
+        const jsonTxt1 = '{"name":"Alice","age":25,"score":85}';
+        // 객체배열
+        const jsonTxt2 = '[{"name":"Alice","age":25,"score":85},{"name":"Bob","age":28,"score":92},{"name":"Charlie","age":32,"score":88}]';
+        // json 역직렬화(파싱)
+        const obj1 = JSON.parse(jsonTxt1);
+        console.log(obj1.name);
+
+        const name = obj1.name;
+        console.log(name);
+        document.getElementById("th").getElementsByTagName("td")[1].innerHTML = obj1.name;
+        document.getElementById("tdy").getElementsByTagName("td")[1].innerHTML = obj1.age;
+        document.getElementById("tdy").getElementsByTagName("td")[3].innerHTML = obj1.score;
+    </script>
+</body>
+</html>
