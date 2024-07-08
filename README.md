@@ -1,3 +1,9 @@
+CSS적용방법 3가지
+1) 인라인스타일
+2) 내부스타일
+3) 외부스타일
+인라인 > 내부 > 외부 순으로 진행된다.
+
 프론트에서 서버에 데이터 전송하는 방법
 1. html에서 form 태그 사용 : 형식(Multipart/form-data, application/x-www..(url 인코딩방식))
 2. js에서 axios를 통해 json 전송
