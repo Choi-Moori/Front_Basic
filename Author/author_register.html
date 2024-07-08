@@ -1,43 +1,76 @@
+<!-- 회원가입
+이름, email, password, 사용자권한(일반유저,관리자),가입완료 버튼
+이름 : input type text
+password : input type password
+사용자권한 : radio
+-->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Author_register</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-</head>
-<body>
-    <object data="header.html" type="text/html" style="width: 100%;"></object>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <object style="width:100%;" data="../common/header.html" type="text/html"></object>
+
     <div class="container">
-        <div class="page-header"><h3>회원가입</h3></div>
-        <form action="" method="post" enctype="application/x-www-form-urlencoded">
-            <div class="form-group">
-                <label for="name">이름</label>
-                <input type="text" class="form-control" name="name" id="name">
-            </div>
-            <div class="form-group">
-                <label for="email">이메일</label>
-                <input type="email" class="form-control" name = "email" id ="email">
-            </div>
-            <div class="form-group">
-                <label for="password">패스워드</label>
-                <input type="password" class="form-control" name="password" id = "password">
-            </div>
-            <div class="form-group">
-                <label for="role">사용자 권한</label>
-                <select name="role" id="role" class="form-select">
-                    <option value="user">일반유저</option>
-                    <option value="admin">관리자</option>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-secondary">가입완료</button>
-        </form>
+      <div class="page-header"><h3>회원 가입</h3></div>
+      <form id="authorForm">
+        <div class="mx-auto">
+          <div class="form-group">
+            <label for="name">이름</label>
+            <input type="text" name="name" id="name" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="email">이메일</label>
+            <input type="email" name="email" id="email" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="password">비밀 번호</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <label for="role">사용권한</label><br>
+            <select name="role" id="role" class="form-select">
+                <option value="admin">관리자</option>
+                <option value="user" selected>일반유저</option>
+
+            </select>
+          </div>
+          <div style="float: right">
+            <button type="submit" class="btn btn-secondary">등록</button>
+          </div>
+        </div>
+      </form>
     </div>
-    
-
-        
-
-    
-
-</body>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        document.getElementById("authorForm").addEventListener('submit',
+            async function(event){
+                event.preventDefault();
+                const name=document.getElementById("name").value;
+                const email=document.getElementById("email").value;
+                const password=document.getElementById("password").value;
+                const role=document.getElementById("role").value;
+                try{
+                    const response = await axios.post('http://localhost:8081/author/register1',{name,email,password,role})
+                    console.log(response);
+                }
+                catch(e){
+                    console.log(e)
+                }
+            }
+        )
+    </script>
+  </body>
 </html>

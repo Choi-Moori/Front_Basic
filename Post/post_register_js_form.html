@@ -1,28 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>게시판 서비스</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    
-</head>
-<body>
-   <object style="width:100%;" data="header.html" type="text/html"></object>
-   <div class="container">
-        <div class="page-header"><h3>글쓰기</h3></div>
-        <form action="" method="post" enctype="application/x-www-form-urlencoded">
-            <div class="form-group">
-                <label for="title">제목</label>
-                <input type="text" class="form-control" name="title" id="title">
-            </div>
-            <div class="form-group">
-                <label for="contents">내용입력</label>
-                <textarea name="contents" id="contents"  class="form-control" rows="10" maxlength="800" placeholder="여기에 글을 쓰세요."></textarea>
-            </div>
-            <button type="submit" id ="mybutton"class="btn btn-secondary">제출</button>
-        </form> 
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <object style="width: 100%" data="header.html" type="text/html"></object>
+    <div class="container">
+      <div class="page-header"><h3>글쓰기</h3></div>
+      <form id="postForm">
+        <div class="form-group">
+          <label for="title">제목</label>
+          <input type="text" name="title" id="title" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="contents">내용입력</label>
+          <textarea
+            name="contents"
+            id="contents"
+            rows="10"
+            maxlength="800"
+            placeholder="여기에 글을 쓰세요."
+            class="form-control"
+          ></textarea>
+        </div>
+        <div>
+          <button type="submit" class="btn btn-secondary">제출</button>
+        </div>
+      </form>
     </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-</body>
+    <script>
+      // document.getElementById().addEventListener('submit',콜백함수)
+      document.getElementById("postForm").addEventListener('submit',
+        async function(event){
+          event.preventDefault();
+          const title=document.getElementById('title').value; //값 꺼내오려면 value 붙이는 거 필수
+          const contents = document.getElementById('contents').value;
+          // 이렇게 하면 형식은
+          // title=hong&contents=hong is...
+          // 위와 같이 key-value 형식으로 들어감
+          const formData=new FormData();
+          formData.append('title',title);
+          formData.append('contents',contents);
+          console.log(formData)
+          // board_api의 BoardApplication 실행시키고
+          // PostController에서 아래 코드로 서버에서 ok 받는 거 체크
+    //       @ResponseBody
+    // @PostMapping("/author/register1")
+    // public String authorRegister1(@RequestBody Author body){
+    //     Author.authors.add(new Author(body.getName(), body.getEmail(), body.getPassword()));
+    //     return "ok";
+    // }
+    // @ResponseBody
+    // @PostMapping("/author/register2")
+    // public String authorRegister2(Author body){
+    //     Author.authors.add(new Author(body.getName(), body.getEmail(), body.getPassword()));
+    //     return "ok";
+    // }
+          try{
+            const response=await axios.post("http://localhost:8081/post/register2",formData)
+            console.log(response)
+          }
+          catch(e){
+            console.log(e.message)
+          }
+
+        }
+      )
+    </script>
+  </body>
 </html>
