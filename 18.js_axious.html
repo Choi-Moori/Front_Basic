@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>js axios</title>
+</head>
+<body>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+      async function postApi1(){
+        const response1 = await axios.get("https://jsonplaceholder.typicode.com/posts/1");
+        // axios를 통한 데이터 호출시 .data 해줘야 함에 유의
+        console.log(response1.data);
+      }
+      async function postApi2(){
+        try{
+          // 여기서 서버가 응답을 안주면 에러가 나는 이유는?? => .data가 없으면 undefined를 참조하는 작업에서 에러가 날 수 있음 / 일반적으로 에러가 날 수 있는 부분을 예외처리를 해준다.
+          const response2 = await axios.get("https://jsonplaceholder.typicode.com/posts");
+        // 여기 안에서는 동기적으로 움직임
+        // axios를 통한 데이터 호출시 .data 해줘야 함에 유의
+        console.log(response2.data); // 형식 : 배열안에 객체 형식
+        const arr = response2.data;
+        // 배열 안에 객체를 아래 형식으로 출력
+        // userId : 1
+        // ID : 1
+        // Title : xx
+        // Contents : xx
+        arr.forEach(element => {
+          console.log(`userId : ${element.userId}`);
+          console.log(`title : ${element.title}`);
+          console.log(`body : ${element.body}`);
+        });
+        }catch(e){
+          console.log(e);
+        }
+        
+      }
+      postApi1();
+      postApi2();
+    </script>
+</body>
+</html>s

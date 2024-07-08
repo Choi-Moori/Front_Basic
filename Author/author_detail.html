@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Author Detail</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <style>
+        h3{text-align: center;}
+    </style>
+</head>
+<body>
+    <object style="width:100%;" data="header.html" type="text/html"></object>
+   <div class="container">
+        <div class="page-header"><h3>Author 상세조회</h3></div> 
+        <input type="text" id = "authorId">
+        <button class="btn btn-primary" onclick="serverData()">조회</button>
+        <table class="table">
+            <tr><td>id</td><td id="id"></td></tr>
+            <tr><td>name</td><td id = "name"></td></tr>
+            <tr><td>email</td><td id="email"></td></tr>
+            <tr><td>password</td><td id="password"></td></tr>
+        </table>        
+    </div>
+    <script src = "https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        async function serverData(){
+            const authorId = document.getElementById("authorId").value;
+            const response1 = await axios.get("http://localhost:8081/author/detail/"+authorId);
+            // console.log(response1.data);
+
+            document.getElementById("name").innerHTML = response1.data.name;
+            document.getElementById("id").innerHTML = response1.data.id;
+            document.getElementById("email").innerHTML = response1.data.email;
+            document.getElementById("password").innerHTML = response1.data.password;
+            
+        }
+    </script>
+</body>
+</html>

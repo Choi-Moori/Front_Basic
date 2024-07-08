@@ -19,7 +19,7 @@
         </div>
         <table class="table">
             <thead>
-                <tr><th>userId</th><th>id</th><th>title</th><th>body</th></tr>
+                <tr><th>id</th><th>name</th><th>email</th><th>password</th></tr>
             </thead>
             <tbody id="bodyData">
                
@@ -29,17 +29,17 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
         async function serverData(){
-            const response1 = await axios.
-            get("https://jsonplaceholder.typicode.com/posts/");
-            const allData = response1.data;
-            let bodyData = document.getElementById("bodyData");
-            for(let i = 0; i < allData.length; i++){
-            let userId = allData[i].userId;
-            let id = allData[i].id;
-            let title = allData[i].title;
-            let body = allData[i].body;
-            bodyData.innerHTML += `<tr><td>${userId}</td><td>${id}</td><td>${title}</td><td>${body}</td></tr>`;
-            }
+            // const response1 = await axios.
+            // get("https://jsonplaceholder.typicode.com/posts/");
+            // const allData = response1.data;
+            // let bodyData = document.getElementById("bodyData");
+            // for(let i = 0; i < allData.length; i++){
+            // let userId = allData[i].userId;
+            // let id = allData[i].id;
+            // let title = allData[i].title;
+            // let body = allData[i].body;
+            // bodyData.innerHTML += `<tr><td>${userId}</td><td>${id}</td><td>${title}</td><td>${body}</td></tr>`;
+            // }
         };
         serverData();
     </script>

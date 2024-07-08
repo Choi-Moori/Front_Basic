@@ -40,9 +40,10 @@
             const postId = document.getElementById("postId").value;
             const response1 = await axios.get("https://jsonplaceholder.typicode.com/posts/" + postId);
             console.log(response1.data);
+            document.getElementById("userId").innerHTML = response1.data.userId;
             document.getElementById("id").innerHTML = response1.data.id;
             document.getElementById("title").innerHTML = response1.data.title;
-            document.getElementById("contents").innerHTML = response1.data.contents;
+            document.getElementById("body").innerHTML = response1.data.body;
         }
     </script>
 </body>
